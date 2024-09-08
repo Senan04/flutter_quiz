@@ -15,15 +15,11 @@ class StartScreen extends StatelessWidget {
           width: 300,
           color: const Color.fromARGB(211, 255, 255, 255),
         ),
-        const Padding(
-          padding: EdgeInsets.all(45.0),
+        Padding(
+          padding: const EdgeInsets.all(45.0),
           child: Text(
             'Learn Flutter the fun way!',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-              decoration: TextDecoration.none,
-            ),
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(fontSize: MediaQuery.of(context).size.width * 0.07),
           ),
         ),
         OutlinedButton.icon(
@@ -34,11 +30,9 @@ class StartScreen extends StatelessWidget {
             Icons.play_arrow,
             color: Colors.white,
           ),
-          label: const Text(
+          label: Text(
             'Start Quiz',
-            style: TextStyle(
-              color: Colors.white,
-            ),
+            style: Theme.of(context).textTheme.labelLarge,
           ),
         ),
       ],

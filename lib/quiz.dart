@@ -3,6 +3,7 @@ import 'package:flutter_quiz/questions_screen.dart';
 import 'package:flutter_quiz/start_screen.dart';
 import 'package:flutter_quiz/data/questions.dart';
 import 'package:flutter_quiz/answers_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -19,9 +20,13 @@ class _QuizState extends State<Quiz> {
   void switchScreen(String screen) {
     setState(() {
       if (screen == 'Questionsscreen') {
+        selectedAnswers = [];
         activeScreen = QuestionsScreen(addAnswer: addAnswer);
       } else if (screen == 'Endscreen') {
-        activeScreen = AnswersScreen();
+        activeScreen = AnswersScreen(
+          chosenAnswers: selectedAnswers,
+          switchScreen: switchScreen,
+        );
       }
     });
   }
@@ -57,6 +62,12 @@ class _QuizState extends State<Quiz> {
           ),
         ),
         child: activeScreen,
+      ),
+      theme: ThemeData(
+        textTheme: GoogleFonts.robotoTextTheme().apply(
+          displayColor: Colors.white,
+          bodyColor: Colors.white,
+        ),
       ),
     );
   }
